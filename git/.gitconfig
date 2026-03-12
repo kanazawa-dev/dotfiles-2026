@@ -1,0 +1,43 @@
+[user]
+  name  = Kanazawa
+  email = alexelgueta.developer@gmail.com
+
+[core]
+  pager      = delta
+  editor     = nvim
+  autocrlf   = input
+
+[delta]
+  navigate        = true
+  side-by-side    = true
+  line-numbers    = true
+  syntax-theme    = Catppuccin Mocha
+  file-style      = bold yellow
+  hunk-header-style = file line-number
+
+[merge]
+  conflictstyle = diff3
+
+[diff]
+  colorMoved = default
+
+[alias]
+  s    = status -sb
+  lg   = log --oneline --graph --decorate -20
+  undo = reset --soft HEAD~1
+  oops = commit --amend --no-edit
+
+[pull]
+  rebase = false
+
+[push]
+  autoSetupRemote = true
+
+[fetch]
+  prune = true
+
+[init]
+  defaultBranch = main
+
+[color]
+  ui = auto
