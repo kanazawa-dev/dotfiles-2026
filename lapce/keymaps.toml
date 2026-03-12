@@ -1,0 +1,112 @@
+# Kanazawa — Lapce keymaps
+# Documentación: https://docs.lapce.dev/keymaps
+
+# ── Navegación de archivos ─────────────────────────────────────────────────
+[[keymaps]]
+key = "cmd+p"
+command = "palette.line"
+mode = "normal"
+
+[[keymaps]]
+key = "space e"
+command = "explorer.reveal_active_file"
+mode = "normal"
+
+[[keymaps]]
+key = "space f"
+command = "palette.line"
+mode = "normal"
+
+[[keymaps]]
+key = "space s"
+command = "palette.workspace_symbol"
+mode = "normal"
+
+[[keymaps]]
+key = "space /"
+command = "search.global_search"
+mode = "normal"
+
+# ── Splits ────────────────────────────────────────────────────────────────
+[[keymaps]]
+key = "space \\|"
+command = "split.vertical"
+mode = "normal"
+
+[[keymaps]]
+key = "space -"
+command = "split.horizontal"
+mode = "normal"
+
+[[keymaps]]
+key = "ctrl+h"
+command = "split.left"
+mode = "normal"
+
+[[keymaps]]
+key = "ctrl+l"
+command = "split.right"
+mode = "normal"
+
+[[keymaps]]
+key = "ctrl+k"
+command = "split.up"
+mode = "normal"
+
+[[keymaps]]
+key = "ctrl+j"
+command = "split.down"
+mode = "normal"
+
+# ── LSP ───────────────────────────────────────────────────────────────────
+[[keymaps]]
+key = "g d"
+command = "editor.go_to_definition"
+mode = "normal"
+
+[[keymaps]]
+key = "g r"
+command = "editor.go_to_references"
+mode = "normal"
+
+[[keymaps]]
+key = "g i"
+command = "editor.go_to_implementation"
+mode = "normal"
+
+[[keymaps]]
+key = "K"
+command = "editor.show_hover"
+mode = "normal"
+
+[[keymaps]]
+key = "space r"
+command = "editor.rename_symbol"
+mode = "normal"
+
+[[keymaps]]
+key = "space a"
+command = "editor.code_action"
+mode = "normal"
+
+[[keymaps]]
+key = "[ d"
+command = "editor.previous_error"
+mode = "normal"
+
+[[keymaps]]
+key = "] d"
+command = "editor.next_error"
+mode = "normal"
+
+# ── Terminal ──────────────────────────────────────────────────────────────
+[[keymaps]]
+key = "space t"
+command = "terminal.toggle_bottom_panel"
+mode = "normal"
+
+# ── Format ────────────────────────────────────────────────────────────────
+[[keymaps]]
+key = "space b"
+command = "editor.format_document"
+mode = "normal"

@@ -22,6 +22,7 @@ DO_GIT=false
 DO_NVIM=false
 DO_CLAUDE=false
 DO_SKILLS=false
+DO_LAPCE=false
 
 # ── Helpers ───────────────────────────────────────────────────────────────
 cls() { printf '\033[2J\033[H'; }
@@ -292,8 +293,8 @@ press_enter
 # PASO 8 — SKILLS
 # ══════════════════════════════════════════════════════════════════════════
 cls
-print_header 8 8 "Claude Code Skills — slash commands"
-print_progress 8 8
+print_header 8 9 "Claude Code Skills — slash commands"
+print_progress 8 9
 echo ""
 echo "  25 skills para invocar con ${B}/nombre${W} dentro de Claude Code."
 echo ""
@@ -322,6 +323,29 @@ fi
 press_enter
 
 # ══════════════════════════════════════════════════════════════════════════
+# PASO 9 — LAPCE
+# ══════════════════════════════════════════════════════════════════════════
+cls
+print_header 9 9 "Lapce — editor rápido en Rust"
+print_progress 9 9
+echo ""
+echo "  Configura Lapce con el mismo estilo que Ghostty y Neovim:"
+echo ""
+echo "  ${G}·${W}  ${BOLD}Monaspace Neon${W} — misma fuente en todo el setup"
+echo "  ${G}·${W}  ${BOLD}Vim mode${W}       — modal editing nativo"
+echo "  ${G}·${W}  ${BOLD}Format on save${W} — via LSP (prettier, ruff, etc.)"
+echo "  ${G}·${W}  ${BOLD}Keymaps${W}        — Space como leader, splits con ctrl+hjkl"
+echo "  ${G}·${W}  ${BOLD}Terminal${W}       — misma fuente y tamaño"
+echo ""
+echo "  ${D}Tras instalar, abre el plugin manager y busca${W} ${B}catppuccin-lapce${W}"
+echo "  ${D}para que el tema haga match con el resto del setup.${W}"
+echo ""
+if ask "¿Configurar Lapce?"; then
+  DO_LAPCE=true
+fi
+press_enter
+
+# ══════════════════════════════════════════════════════════════════════════
 # RESUMEN
 # ══════════════════════════════════════════════════════════════════════════
 cls
@@ -340,6 +364,7 @@ check $DO_GIT      "Git config y aliases"
 check $DO_NVIM     "Neovim"
 check $DO_CLAUDE   "Claude Code status line"
 check $DO_SKILLS   "Claude Code Skills (25)"
+check $DO_LAPCE    "Lapce config"
 
 echo ""
 if ask "¿Confirmar e instalar?"; then
@@ -403,6 +428,13 @@ if $DO_SKILLS; then
   run_step "Copiando skills" cp -r "$DOTFILES_DIR/skills/"* ~/.claude/skills/
 fi
 
+if $DO_LAPCE; then
+  LAPCE_DIR="$HOME/Library/Application Support/dev.lapce.Lapce-Stable"
+  mkdir -p "$LAPCE_DIR"
+  run_step "Copiando settings de Lapce" cp "$DOTFILES_DIR/lapce/settings.toml" "$LAPCE_DIR/settings.toml"
+  run_step "Copiando keymaps de Lapce"  cp "$DOTFILES_DIR/lapce/keymaps.toml"  "$LAPCE_DIR/keymaps.toml"
+fi
+
 # ── Fin ───────────────────────────────────────────────────────────────────
 echo ""
 echo "  ${G}${BOLD}╭──────────────────────────────────────────────────╮${W}"
@@ -415,4 +447,5 @@ echo "  ${D}1.${W}  Abre una nueva tab"
 $DO_GIT      && echo "  ${D}2.${W}  Actualiza nombre y email: ${B}nvim ~/.gitconfig${W}"
 $DO_NVIM     && echo "  ${D}3.${W}  En nvim presiona ${B}Space ?${W} para ver todos los atajos"
 $DO_ZSH      && echo "  ${D}4.${W}  En tu proyecto: crea ${B}.envrc${W} y ejecuta ${B}direnv allow${W}"
+$DO_LAPCE    && echo "  ${D}5.${W}  En Lapce: plugin manager → buscar ${B}catppuccin-lapce${W}"
 echo ""

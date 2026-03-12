@@ -1,0 +1,28 @@
+[core]
+# Catppuccin: instalar plugin "catppuccin-lapce" desde el plugin manager
+# Luego cambiar a "Catppuccin Mocha" o "Catppuccin Latte"
+color-theme = "Lapce Dark"
+modal = true
+icon-theme = "Lapce Codicons"
+
+[editor]
+font-family = "Monaspace Neon"
+font-size = 13
+line-height = 1.6
+tab-width = 2
+format-on-save = true
+auto-save = true
+auto-closing-matching-pairs = true
+auto-surround = true
+scroll-beyond-last-line = true
+cursor-surrounding-lines = 8
+render-whitespace = "none"
+indent-guides = true
+bracket-pair-colorization = true
+sticky-header = true
+show-indent-guide = true
+
+[terminal]
+font-family = "Monaspace Neon"
+font-size = 13
+line-height = 1.4
