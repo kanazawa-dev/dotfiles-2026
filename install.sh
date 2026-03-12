@@ -21,6 +21,7 @@ DO_STARSHIP=false
 DO_GIT=false
 DO_NVIM=false
 DO_CLAUDE=false
+DO_SKILLS=false
 
 # ── Helpers ───────────────────────────────────────────────────────────────
 cls() { printf '\033[2J\033[H'; }
@@ -266,8 +267,8 @@ press_enter
 # PASO 7 — CLAUDE CODE
 # ══════════════════════════════════════════════════════════════════════════
 cls
-print_header 7 7 "Claude Code — status line"
-print_progress 7 7
+print_header 7 8 "Claude Code — status line"
+print_progress 7 8
 echo ""
 echo "  Status line personalizada para Claude Code."
 echo ""
@@ -284,6 +285,39 @@ echo "  ${M}󰔛 28m${W}          duración de la sesión actual"
 echo ""
 if ask "¿Instalar status line de Claude Code?"; then
   DO_CLAUDE=true
+fi
+press_enter
+
+# ══════════════════════════════════════════════════════════════════════════
+# PASO 8 — SKILLS
+# ══════════════════════════════════════════════════════════════════════════
+cls
+print_header 8 8 "Claude Code Skills — slash commands"
+print_progress 8 8
+echo ""
+echo "  25 skills para invocar con ${B}/nombre${W} dentro de Claude Code."
+echo ""
+echo "  ${BOLD}Para tu stack (máximo detalle):${W}"
+echo ""
+echo "  ${B}/review${W}     code review con severidades y código mejorado"
+echo "  ${B}/component${W}  React/Vue/Next.js production-ready con tests"
+echo "  ${B}/lambda${W}     AWS Lambda TypeScript con estructura y IAM"
+echo "  ${B}/graphql${W}    schema, resolvers, DataLoaders y cliente"
+echo "  ${B}/types${W}      branded types, discriminated unions, type guards"
+echo "  ${B}/arch${W}       arquitectura con ADRs y diagramas"
+echo "  ${B}/test${W}       Vitest + Testing Library para React y Vue"
+echo "  ${B}/perf${W}       performance con diagnóstico y before/after"
+echo "  ${B}/design${W}     UI/UX con todos los estados y accesibilidad"
+echo "  ${B}/api${W}        REST y tRPC con validación y rate limiting"
+echo ""
+echo "  ${BOLD}Oficiales:${W}"
+echo ""
+echo "  ${D}Vercel:${W}   react-best-practices, web-design-guidelines, composition-patterns"
+echo "  ${D}antfu:${W}    vue, vue-best-practices, vitest, vite, vueuse, turborepo, pnpm"
+echo "  ${D}Anthropic:${W} frontend-design, webapp-testing, canvas-design, theme-factory"
+echo ""
+if ask "¿Instalar las 25 skills?"; then
+  DO_SKILLS=true
 fi
 press_enter
 
@@ -305,6 +339,7 @@ check $DO_STARSHIP "Starship prompt"
 check $DO_GIT      "Git config y aliases"
 check $DO_NVIM     "Neovim"
 check $DO_CLAUDE   "Claude Code status line"
+check $DO_SKILLS   "Claude Code Skills (25)"
 
 echo ""
 if ask "¿Confirmar e instalar?"; then
@@ -361,6 +396,11 @@ if $DO_CLAUDE; then
   run_step "Copiando status line" cp "$DOTFILES_DIR/claude/statusline-command.sh" ~/.claude/statusline-command.sh
   run_step "Copiando settings" cp "$DOTFILES_DIR/claude/settings.json" ~/.claude/settings.json
   chmod +x ~/.claude/statusline-command.sh
+fi
+
+if $DO_SKILLS; then
+  mkdir -p ~/.claude/skills
+  run_step "Copiando skills" cp -r "$DOTFILES_DIR/skills/"* ~/.claude/skills/
 fi
 
 # ── Fin ───────────────────────────────────────────────────────────────────
