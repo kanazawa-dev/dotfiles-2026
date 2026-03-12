@@ -1,0 +1,79 @@
+# Theme: auto light/dark based on macOS appearance
+theme = light:Catppuccin Latte,dark:Catppuccin Mocha
+
+# Font
+font-family = "Monaspace Neon"
+font-size = 13
+font-feature = calt
+font-feature = liga
+font-feature = ss01
+font-feature = ss02
+font-feature = ss03
+font-feature = ss04
+font-feature = ss05
+font-feature = ss06
+font-feature = ss07
+font-feature = ss08
+
+# Window
+window-padding-x = 12
+window-padding-y = 10
+window-decoration = true
+macos-titlebar-style = tabs
+
+# Transparencia y blur (requiere macOS)
+background-opacity = 0.92
+background-blur-radius = 20
+
+# Cursor
+cursor-style = bar
+cursor-style-blink = true
+
+# Scrollback
+scrollback-limit = 50000
+
+# Shell integration
+shell-integration = zsh
+shell-integration-features = cursor,sudo,title
+
+# Copiar al seleccionar (como iTerm/tmux)
+copy-on-select = true
+
+# Confirmar antes de cerrar si hay proceso activo
+confirm-close-surface = true
+
+# Resize sin ajustar fuente
+resize-overlay = never
+
+# Abrir nuevas ventanas/tabs en el mismo directorio
+window-inherit-working-directory = true
+
+# Tipografía macOS
+font-thicken = true
+
+# Mouse
+mouse-hide-while-typing = true
+
+# Contraste mínimo con fondo transparente
+minimum-contrast = 1.1
+
+# macOS Option como Alt (esencial para atajos CLI)
+macos-option-as-alt = true
+
+# Cerrar app al cerrar última ventana
+quit-after-last-window-closed = true
+
+# Restaurar estado al reabrir
+window-save-state = always
+
+# Portapapeles
+clipboard-read = allow
+clipboard-write = allow
+
+# Keybindings
+keybind = cmd+t=new_tab
+keybind = cmd+w=close_surface
+keybind = cmd+d=new_split:right
+keybind = cmd+shift+d=new_split:down
+keybind = cmd+k=clear_screen
+keybind = cmd+shift+enter=toggle_fullscreen
